@@ -50,7 +50,7 @@ resource "aws_vpc" "dpp-vpc" {
 
 resource "aws_subnet" "dpp-public-subnet01" {
   vpc_id = aws_vpc.dpp-vpc.id
-  cidr_block = "10.1.1.0./24"
+  cidr_block = "10.1.1.0/24"
   map_public_ip_on_launch = "true"
   availability_zone = "us-east-1a"
   tags = {
@@ -84,12 +84,12 @@ resource "aws_route_table" "dpp-public-rt" {
 }
 
 
-resource "aws_route_table_association" "namedpp-rta-subnet-01" {
-  subnet_id = aws_subnet.dpp-public-subnet01.01
-  route_table_id = aws_route_table.dpp-public-rt
+resource "aws_route_table_association" "dpp-rta-subnet-01" {
+  subnet_id = aws_subnet.dpp-public-subnet01.id
+  route_table_id = aws_route_table.dpp-public-rt.id
 }
 
-resource "aws_route_table_association" "name" {
+resource "aws_route_table_association" "dpp-rta-subnet-02" {
   subnet_id = aws_subnet.dpp-public-subnet02.id 
-  route_table_id = aws_route_table.dpp-public-rt
+  route_table_id = aws_route_table.dpp-public-rt.id
 }
