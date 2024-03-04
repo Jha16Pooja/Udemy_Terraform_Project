@@ -3,3 +3,4 @@ terraform.tfstate
 CompleteProject.pem
 .terraform.lock.hcl 
 .terraform/
+V4_EC2_ForEach.tf
