@@ -1,0 +1,5 @@
+terraform.tfstate.backup
+terraform.tfstate
+CompleteProject.pem
+.terraform.lock.hcl 
+.terraform/
