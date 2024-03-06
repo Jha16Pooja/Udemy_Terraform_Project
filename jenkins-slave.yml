@@ -1,0 +1,9 @@
+- name: set up maven at jenkins slave machine
+  hosts: jenkins-slave
+  become: true
+  tasks:
+  - name: Install maven
+    apt:
+      name: maven
+      state: present
+

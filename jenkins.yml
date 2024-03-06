@@ -1,0 +1,33 @@
+#Ansible Playbook to set up Jenkins Server and required Software
+
+- name: Setup Jenkins and required Software
+  hosts: jenkins-master
+  become: yes #run tasks with elevated privileges (sudo)
+  tasks:
+  - name: Install reuired Software
+    apt:
+      name: openjdk-11-jre
+      state: present
+      update_cache: yes
+  - name: Install Git
+    apt:
+      name: git
+      state: present
+      update_cache: no
+  - name: Install Maven
+    apt:
+      name: maven
+      state: present
+      update_cache: no
+  - name: Download Jenkins.war
+    get_url:
+      url: https://get.jenkins.io/war-stable/2.440.1/jenkins.war
+      dest: /opt/jenkins
+  - name: Start jenkins service
+    service:
+      name: jenkins
+      state: started
+  - name: enable jenkins to start at boot time
+    service:
+      name: jenkins
+      enabled: yes
